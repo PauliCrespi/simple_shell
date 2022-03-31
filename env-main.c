@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <string.h>
+#include "sshlib.h"
 
 int main(int ac __attribute__((unused)), char **av)
 {
@@ -9,6 +8,8 @@ int main(int ac __attribute__((unused)), char **av)
 	{
 		printf("%s\n", av[i]);
 	}
+
+	ssh_loop();
 	return (0);
 }
 

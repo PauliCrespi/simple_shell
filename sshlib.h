@@ -9,6 +9,7 @@
 
 void ssh_loop(void);
 void ssh_strtok(char **arr, int size);
+char **ssh_tokenizer(char *line);
 
 #endif
 /* END OF FILE */

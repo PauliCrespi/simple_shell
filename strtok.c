@@ -3,7 +3,7 @@
 #include <stdlib.h>
 char* line()
 {
-	size_t sizebuff = 32;
+	size_t sizebuff = 64;
 	char *buffer;
 
 	buffer = (char *)malloc(sizeof(char) * sizeof(char));
@@ -25,7 +25,7 @@ int main()
 	if (tokenize == NULL)
 	{
 		printf("%s", tokenize);
-		puts("No separators found");
+		printf("No separators found");
 		return(1);
 	}
 	while (tokenize)

@@ -7,9 +7,9 @@
 #include <stddef.h>
 #include <unistd.h>
 
-void ssh_loop(void);
-void ssh_strtok(char **arr, int size);
-char **ssh_tokenizer(char *line);
+int prompt(void);
+//void ssh_strtok(char **arr, int size);
+void tokenizer(char *line);
 
 #endif
 /* END OF FILE */

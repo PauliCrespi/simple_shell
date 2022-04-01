@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,33 +6,31 @@ char* line()
 {
 	size_t sizebuff = 64;
 	char *buffer;
+=======
+#include "sshlib.h"
+>>>>>>> 02e9323807f3c527360b5f71e84f1a8fc70fc616
 
-	buffer = (char *)malloc(sizeof(char) * sizeof(char));
-	if (buffer == NULL)
-	{
-		perror("Unable to allocate buffer");
-		exit(1);
-	}
-	printf("$ ");
-	getline(&buffer, &sizebuff, stdin);
-	return(buffer);
-}
-int main()
+void tokenizer(char *line)
 {
 	char *tokenize;
-	char *argument	= line();
 
-	tokenize = strtok(argument, " ");
+	tokenize = strtok(line, " ");
 	if (tokenize == NULL)
 	{
 		printf("%s", tokenize);
+<<<<<<< HEAD
 		printf("No separators found");
 		return(1);
+=======
+		puts("No separators found");
+		exit(-1);
+		//return (1);
+>>>>>>> 02e9323807f3c527360b5f71e84f1a8fc70fc616
 	}
 	while (tokenize)
 	{
 		printf("%s\n", tokenize);
 		tokenize = strtok(NULL, " ");
 	}
-	return (0);
+	return;
 }

@@ -1,14 +1,15 @@
 #include "sshlib.h"
-int fwe(char *cmd, char *argv[])
+int main(void)
 {
 	int pid, status, i = 0;
+	char *argv[] = {"/tmp/ls", "-l", NULL};
 
 	for (i = 0; i <= 4; i++)
 	{
 		pid = fork();
 		if (pid == 0)
 		{
-			execve(cmd, argv, NULL);
+			execve(argv[0], argv, NULL);
 		}
 		while(wait(&status) != pid);
 	}

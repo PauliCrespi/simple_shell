@@ -1,20 +1,27 @@
 #include "sshlib.h"
 
-void ssh_loop(void)
-{
-	size_t len = 0;
-	ssize_t lineSize = 0;
-	char **tokens;
 
-	do {
-		char *line = NULL;
-		printf("$ ");
-		lineSize = getline(&line, &len, stdin);
-		tokens = ssh_tokenizer(line);
-		printf("Command: %s", line); 
-		printf("Chars: %zu\n", lineSize -1);
-		printf("Tokens: %zu\n", strlen(*tokens));
-		free(line);
-	} while (lineSize != -1);
-	return;
+int prompt(void)
+{
+        size_t sizebuff = 32;
+        char *buffer;
+        int response = 0;
+        
+        while(response != -1)
+        {
+            buffer = (char *)malloc(sizeof(char) * sizebuff);
+            if (buffer == NULL)
+            {
+                    perror("Unable to allocate buffer");
+                    exit(1);
+            }
+            printf("$ ");
+            response = getline(&buffer, &sizebuff, stdin);
+            printf("%s", buffer);
+            tokenizer(buffer);
+            free(buffer);
+        }
+        //write(STDIN_FILENO, "\n", 1);
+        return (response);
 }
+

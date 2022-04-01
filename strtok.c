@@ -1,37 +1,21 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-char* line()
-{
-	size_t sizebuff = 32;
-	char *buffer;
+#include "sshlib.h"
 
-	buffer = (char *)malloc(sizeof(char) * sizeof(char));
-	if (buffer == NULL)
-	{
-		perror("Unable to allocate buffer");
-		exit(1);
-	}
-	printf("$ ");
-	getline(&buffer, &sizebuff, stdin);
-	return(buffer);
-}
-int main()
+void tokenizer(char *line)
 {
 	char *tokenize;
-	char *argument	= line();
 
-	tokenize = strtok(argument, " ");
+	tokenize = strtok(line, " ");
 	if (tokenize == NULL)
 	{
 		printf("%s", tokenize);
 		puts("No separators found");
-		return(1);
+		exit(-1);
+		//return (1);
 	}
 	while (tokenize)
 	{
 		printf("%s\n", tokenize);
 		tokenize = strtok(NULL, " ");
 	}
-	return (0);
+	return;
 }

@@ -2,34 +2,34 @@
 
 char **ssh_tokenizer(char *line)
 {
-	int bufsize = 32, position = 0;
+	int bufsize = 32, pos = 0;
 	char **tokens = malloc(bufsize * sizeof(char*));
 	char *token;
 
 	if (!tokens)
 	{
 		fprintf(stderr, "ssh: allocation error\n");
-		exit(EXIT_FAILURE);
+		exit(-1);
 	}
 
 	token = strtok(line, " ");
 	while (token != NULL)
 	{
-		tokens[position] = token;
-		position++;
+		tokens[pos] = token;
+		pos++;
 
-		if (position >= bufsize)
+		if (pos >= bufsize)
 		{
 			bufsize += 32;
 			tokens = realloc(tokens, bufsize * sizeof(char*));
 			if (!tokens)
 			{
 				fprintf(stderr, "ssh: allocation error\n");
-				exit(EXIT_FAILURE);
+				exit(-1);
 			}
 		}
 		token = strtok(NULL, " ");
 	}
-	tokens[position] = NULL;
-	return tokens;
+	tokens[pos] = NULL;
+	return (tokens);
 }

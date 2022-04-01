@@ -1,5 +1,6 @@
 #include "sshlib.h"
-int fwe(char *cmd, char *argv[])
+
+int fwe(char *argv[])
 {
 	int pid, status, i = 0;
 

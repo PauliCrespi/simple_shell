@@ -1,6 +1,7 @@
 #ifndef SSHLIB_H
 #define SSHLIB_H
-
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -10,7 +11,7 @@
 int prompt(void);
 //void ssh_strtok(char **arr, int size);
 char **tokenizer(char *line);
-
+int fwe(char *cmd, char *argv[]);
 #endif
 /* END OF FILE */
 

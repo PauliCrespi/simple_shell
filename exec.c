@@ -11,20 +11,31 @@
 int main(void)
 {
 	char *argv[] = {"/bin/ls", "-l", "/tmp/", NULL};
-	int status, pd, i = 0;
+	int status, pid, i = 0;
 
 	for(i = 0; i <= 4; i++)
 	{
-		pd = fork();
-		if (pd == 0)
+		pid = fork();
+		if (pid == -1)
 		{
+			perror("Error: ");
+			return (1);
+		}
+		if (pid == 0)
+		{
+			printf("Waiting for child proccess %d\n", pid);
+			printf("PID: %d\n", getpid());
+			printf("PPID: %d\n", getppid());
+			sleep(3);
 			if (execve(argv[0], argv, NULL) == -1)
 			{
 				perror("Error:");
 			}
-			while (wait(&status) != pd)
-			{
-			}
+		}
+		else
+		{
+			wait(&status);
+			printf("Oh, it's all better now\n");
 		}
 	}	
 	return (0);

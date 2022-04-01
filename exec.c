@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
-
+#include <sys/types.h>
+#include <sys/wait.h>
 /**
  *  * main - execve example
  *   *
@@ -8,13 +9,18 @@
  *     */
 int main(void)
 {
-	    char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
+	    char *argv[] = {"/bin/ls", "-l", "/tmp/", NULL};
+		int pid, status, i = 0;
 
-	        printf("Before execve\n");
-		    if (execve(argv[0], argv, NULL) == -1)
+	        for(i = 0; i <= 4; i++)
+		{
+		    if ((pid = execve(argv[0], argv, NULL)) == -1)
 			        {
 					        perror("Error:");
 						    }
-		        printf("After execve\n");
-			    return (0);
+		    while (wait(&status) != pid)
+		    {
+		    }
+		}	
+	    		return (0);
 }

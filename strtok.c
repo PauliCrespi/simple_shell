@@ -1,9 +1,13 @@
 #include "sshlib.h"
-void tokenizer(char *line)
+
+char **tokenizer(char *line)
 {
 	char *tokenize;
+	char *vtokens[1024];
+	char **vtptr = vtokens;
+	int i = 0;
 
-	tokenize = strtok(line, " ");
+    tokenize = strtok(line, " ");
 	if (tokenize == NULL)
 	{
 		printf("%s", tokenize);
@@ -13,8 +17,13 @@ void tokenizer(char *line)
 	}
 	while (tokenize)
 	{
-		printf("%s\n", tokenize);
+	    //printf("Token: %s\n", vtokens[i]);
+		//printf("%s\n", tokenize);
+		
+	    vtokens[i] = tokenize;
 		tokenize = strtok(NULL, " ");
+		i++;
 	}
-	return;
+	
+	return (vtptr);
 }

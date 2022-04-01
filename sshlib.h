@@ -9,7 +9,7 @@
 
 int prompt(void);
 //void ssh_strtok(char **arr, int size);
-void tokenizer(char *line);
+char **tokenizer(char *line);
 
 #endif
 /* END OF FILE */

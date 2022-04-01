@@ -1,11 +1,12 @@
 #include "sshlib.h"
 
-
 int prompt(void)
 {
         size_t sizebuff = 32;
         char *buffer;
         int response = 0;
+        char **vtptr;
+        int i;
         
         while(response != -1)
         {
@@ -18,7 +19,13 @@ int prompt(void)
             printf("$ ");
             response = getline(&buffer, &sizebuff, stdin);
             printf("%s", buffer);
-            tokenizer(buffer);
+            vtptr = tokenizer(buffer);
+            while (vtptr[i])
+            {
+                printf("Token: %s\n", vtptr[i]);
+                i++;
+            }
+            i = 0;
             free(buffer);
         }
         //write(STDIN_FILENO, "\n", 1);

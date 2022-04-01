@@ -11,16 +11,20 @@
 int main(void)
 {
 	char *argv[] = {"/bin/ls", "-l", "/tmp/", NULL};
-	int pid, status, i = 0;
+	int status, pd, i = 0;
 
 	for(i = 0; i <= 4; i++)
 	{
-		if ((pid = execve(argv[0], argv, NULL)) == -1)
+		pd = fork();
+		if (pd == 0)
 		{
-			perror("Error:");
-		}
-		while (wait(&status) != pid)
-		{
+			if (execve(argv[0], argv, NULL) == -1)
+			{
+				perror("Error:");
+			}
+			while (wait(&status) != pd)
+			{
+			}
 		}
 	}	
 	return (0);

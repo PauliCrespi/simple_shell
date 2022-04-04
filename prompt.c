@@ -25,9 +25,15 @@ int prompt(void)
                 printf("Token: %s\n", vtptr[i]);
                 i++;
             }
+<<<<<<< HEAD
 	    _fork(vtptr);
 	    i = 0;
 	    free(buffer);
+=======
+            
+            i = 0;
+            free(buffer);
+>>>>>>> 9080491225558f469c017b16bdfc865788c704fe
         }
         //write(STDIN_FILENO, "\n", 1);
         return (response);

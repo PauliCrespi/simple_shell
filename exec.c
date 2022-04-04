@@ -4,17 +4,14 @@
 #include <sys/wait.h>
 #include <string.h>
 /**
- * main - execve example
+ * main - fork, wait, execve
  *
  * Return: Always 0.
  */
-int main(void)
+int _fork(char **vtptr)
 {
-	char *argv[] = {"/bin/ls", "-l", "/tmp/", NULL};
-	int status, pid, i = 0;
+	int status, pid;
 
-	for(i = 0; i <= 4; i++)
-	{
 		pid = fork();
 		if (pid == -1)
 		{
@@ -27,16 +24,12 @@ int main(void)
 			printf("PID: %d\n", getpid());
 			printf("PPID: %d\n", getppid());
 			sleep(3);
-			if (execve(argv[0], argv, NULL) == -1)
-			{
-				perror("Error:");
-			}
 		}
 		else
 		{
 			wait(&status);
 			printf("Oh, it's all better now\n");
 		}
-	}	
+		execve(vtptr[0], vtptr, NULL);	
 	return (0);
 }

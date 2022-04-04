@@ -11,9 +11,7 @@
 int main(int ac, char **av);
 int prompt(void);
 char **tokenizer(char *line);
-<<<<<<< HEAD
 int _fork(char **vtptr);
-=======
 char **tokenizer2(char *line, char *sep);
 int mypid(void);
 int myppid(void);
@@ -21,7 +19,6 @@ char *_getenv(const char *name);
 int _strlen(const char *s);
 int _strncmp(const char *s1, char *s2, int n);
 
->>>>>>> 9080491225558f469c017b16bdfc865788c704fe
 #endif
 /* END OF FILE */
 

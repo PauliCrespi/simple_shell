@@ -11,7 +11,10 @@
 int main(int ac, char **av);
 int prompt(void);
 char **tokenizer(char *line);
+<<<<<<< HEAD
 
+=======
+>>>>>>> de987029f08c4424621115c6bbdb376eb210bb69
 int _fork(char **vtptr);
 char **tokenizer2(char *line, char *sep);
 int mypid(void);

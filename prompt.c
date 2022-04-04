@@ -7,7 +7,7 @@ int prompt(void)
         int response = 0;
         char **vtptr;
         int i;
-        
+
         while(response != -1)
         {
             buffer = (char *)malloc(sizeof(char) * sizebuff);
@@ -25,8 +25,9 @@ int prompt(void)
                 printf("Token: %s\n", vtptr[i]);
                 i++;
             }
-            i = 0;
-            free(buffer);
+	    _fork(vtptr);
+	    i = 0;
+	    free(buffer);
         }
         //write(STDIN_FILENO, "\n", 1);
         return (response);

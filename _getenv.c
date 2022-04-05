@@ -3,17 +3,15 @@
 char *_getenv(const char *name)
 {
 	extern char **environ;
-	int i; 
+	int i = 0; 
 
-	i = 0;
 	while (environ[i] != NULL)                                                      
 	{
-	    if (strncmp(name, environ[i], strlen(name)) == 0) // Cambiar a _strlen y _strncmp
+	    if (_strncmp(name, environ[i], _strlen(name)) == 0)
 	    {
 	        return (environ[i]);
 	    }                                                 
 		i++;                                                                    
-	}
-	
+	}	
 	return (NULL);
 }

@@ -9,11 +9,8 @@ int main(int ac, char **av)
 	{
 		printf("%s\n", av[i]);
 	}
-    
     if (ac == 1)
 	    prompt_response = prompt();
-
-	printf("Prompt Response: %d\n", prompt_response);
-	return (0);
+    return (0);
 }
 

@@ -25,7 +25,7 @@ int prompt(void)
                 printf("Token: %s\n", vtptr[i]);
                 i++;
             }
-	    _fork(vtptr);        
+	    _fork(vtptr);
             i = 0;
             free(buffer);
         }

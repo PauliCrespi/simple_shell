@@ -4,9 +4,9 @@
  *@s : string
  *Return: string length
  */
-int _strlen(const char *s)
+size_t _strlen(const char *s)
 {
-int i;
+size_t i = 0;
 
 for (i = 0; s[i] != '\0'; i++)
 {
@@ -14,4 +14,3 @@ for (i = 0; s[i] != '\0'; i++)
 }
 return (i);
 }
-

@@ -72,25 +72,25 @@ Int 0 if the function works or -1 if error.
 A prompt will be printed and will wait for the command line.
 
 $ ./hsh    
-($) /bin/ls
-hsh main.c shell.c
-($)
-($) exit
+($) /bin/ls    
+hsh main.c shell.c    
+($)    
+($) exit    
 $
 
 
 ### NON-INTERACTIVE MODE EXAMPLE:
 
-$ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
-$
-$ cat test_ls_2
-/bin/ls
-/bin/ls
-$
-$ cat test_ls_2 | ./hsh
-hsh main.c shell.c test_ls_2
-hsh main.c shell.c test_ls_2
+$ echo "/bin/ls" | ./hsh    
+hsh main.c shell.c test_ls_2    
+$    
+$ cat test_ls_2    
+/bin/ls    
+/bin/ls    
+$    
+$ cat test_ls_2 | ./hsh    
+hsh main.c shell.c test_ls_2    
+hsh main.c shell.c test_ls_2    
 $
 
 
@@ -98,6 +98,8 @@ $
 
 
 1. READ LINE
+
+Get command line.
 
 2. TOKENIZE
 

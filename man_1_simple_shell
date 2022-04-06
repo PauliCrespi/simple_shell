@@ -1,0 +1,35 @@
+.\" Manpage for SIMPLE SHELL
+.TH man 1 "6 April 2022" "1.0" "SIMPLE SHELL MAN PAGE"
+.SH NAME
+Simple Shell
+.SH SYNOPSIS
+int main(int ac, char **argv);
+.SH DESCRIPTION
+Executes commands from arguments writen in the command line with the use of the standard input.
+
+
+.SH COMMANDS
+
+All standard input commands are executable in this shell.    
+
+After compilation done with this code: gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh    
+
+Execute the file by typing:    
+
+./hsh
+
+(For an interactve mode and a prompt will be printed waiting for your command line instructions)    
+
+Or for a non interactive mode type for example:
+
+echo "/bin/ls" | ./hsh
+
+.SH EXIT THE SHELL
+
+To exit the shell you can type "exit on the command line or press Ctrl + Shift + D
+
+
+.SH SEE ALSO
+If you do not understand or information is missing, search for simple shell man page on the internet.
+
+Alex Senges and Paulina Crespi - Holberton School 2022 Uruguay 

@@ -71,7 +71,7 @@ Int 0 if the function works or -1 if error.
 
 A prompt will be printed and will wait for the command line.
 
-$ ./hsh
+$ ./hsh    
 ($) /bin/ls
 hsh main.c shell.c
 ($)

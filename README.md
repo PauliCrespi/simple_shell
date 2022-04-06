@@ -6,10 +6,10 @@ SIMPLE SHELL PROJECT
 By: Alex Senges and Paulina Crespi
 </h2>
 
-##INTRODUCTION:
+## INTRODUCTION:
 Using C language we aimed to simulate UNIX Shell creating our own functions and files. 0x16. C - Simple Shell is Holberton's first trimester's final project. Based on command line inputs this shell will read and implement commands in both interactive and noninteractive mode.
 
-#PROTOTYPE:
+# PROTOTYPE:
 
 int main(int ac, char **av);
 

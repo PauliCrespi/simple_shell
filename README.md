@@ -137,6 +137,6 @@ link to blog
 
 ## AUTHORS:
 
-- * **Alex Senges** - [Alex Senges] (https://github.com/asenges)
+- * **Alex Senges** - [Alex Senges](https://github.com/asenges)
 - * **Paulina Crespi** - [PauliCrespi](https://github.com/PauliCrespi)
 

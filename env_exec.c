@@ -7,10 +7,14 @@
  */
 int main(int ac, char **argv)
 {
-	int i = 0, j = 1, exe = -1;
+	int promptrespone = 1, i = 0, j = 1, exe = -1;
 	char *buf[1024], *find;
 	char **cmd_tokens, **ptrbuf, **ptrb;
 
+	if (ac == 1)
+		    prompt_response = prompt();
+	else
+	{
 	// Copying Argv to Buffer // 
 	for (j = 1; argv[j] != NULL; j++, i++)
 	{
@@ -28,6 +32,7 @@ int main(int ac, char **argv)
 	{
 		printf("ssh: command %s not found.\n", find);
 		return (-1);
+	}
 	}
 	return (0);
 }

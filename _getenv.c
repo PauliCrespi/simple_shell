@@ -15,3 +15,15 @@ char *_getenv(const char *name)
 	}	
 	return (NULL);
 }
+void _getenv_all()
+{
+	extern char **environ;
+	int i; 
+
+	i = 0;
+	while (environ[i] != NULL)                                                      
+	{
+	    printf("%s\n", environ[i]);                                                 
+		i++;                                                                    
+	}
+}

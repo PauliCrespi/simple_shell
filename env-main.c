@@ -3,14 +3,18 @@
 int main(int ac, char **av)
 {
 	int i;
-	int prompt_response = 1;
+	int interactive_ssh = 1;
+	int noninteractive_ssh = 1;
 
-	for (i = 1; av[i] != NULL; i++)
+	if (ac == 1)
 	{
-		printf("%s\n", av[i]);
+	    interactive_ssh = prompt();
+	    printf("ssh response: %d\n", interactive_ssh);
 	}
-    if (ac == 1)
-	    prompt_response = prompt();
-    return (0);
+	else
+	{
+	    noninteractive_ssh = inline_ssh(ac, av);
+	    printf("ssh response: %d\n", noninteractive_ssh);
+	}	
+	return (0);
 }
-

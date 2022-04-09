@@ -2,34 +2,24 @@
 
 int prompt(void)
 {
-        size_t sizebuff = 32;
-        char *buffer;
+        size_t sizebuff = 64;
+	char *buffer = NULL;
+        char **path_tokens, **vtline;
         int response = 0;
-        char **vtptr;
-        int i;
 
+	path_tokens = _tokenize(tokenizer(_getenv("PATH"), "="), ":");	
         while(response != -1)
         {
-            buffer = (char *)malloc(sizeof(char) * sizebuff);
-            if (buffer == NULL)
-            {
-                    perror("Unable to allocate buffer");
-                    exit(1);
-            }
-            printf("$ ");
-            response = getline(&buffer, &sizebuff, stdin);
-            printf("%s", buffer);
-            vtptr = tokenizer(buffer);
-            while (vtptr[i])
-            {
-                printf("Token: %s\n", vtptr[i]);
-                i++;
-            }
-	    _fork(vtptr);
-            i = 0;
-            free(buffer);
-        }
-        //write(STDIN_FILENO, "\n", 1);
-        return (response);
+		printf("[hshc]>_ ");
+		response = getline(&buffer, &sizebuff, stdin);
+		buffer[_strlen(buffer) - 1] = '\0';
+		vtline = tokenizer(buffer, " ");
+		// Manage Exit // 
+		__exit(vtline);
+		_tokexe(vtline, path_tokens);	
+		free(vtline);
+		free(buffer);
+		free(path_tokens);
+	}
+	return (response);
 }
-

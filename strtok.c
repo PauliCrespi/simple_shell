@@ -1,29 +1,40 @@
 #include "sshlib.h"
 
-char **tokenizer(char *line)
+char **tokenizer(char *line, const char *sep)
 {
-	char *tokenize;
-	char *vtokens[1024];
-	char **vtptr = vtokens;
-	int i = 0;
+    char **tokens = malloc(sizeof(char *));
+    *tokens = NULL;
+    size_t n = 1;
+    int success;
 
-    tokenize = strtok(line, " ");
-	if (tokenize == NULL)
-	{
-		printf("%s", tokenize);
-		printf("No separators found");
-		exit(-1);
-		//return (1);
-	}
-	while (tokenize)
-	{
-	    //printf("Token: %s\n", vtokens[i]);
-		//printf("%s\n", tokenize);
-		
-	    vtokens[i] = tokenize;
-		tokenize = strtok(NULL, " ");
-		i++;
-	}
-	
-	return (vtptr);
+    char *p = strtok(line, sep);
+    if (p != NULL)
+        success = 1;
+    else
+        success = 0;
+
+    while (success)
+    {
+        char **tmp = realloc(tokens,(n + 1) * sizeof(char *));
+        if (tmp == NULL)
+        {
+            free(tokens);
+            tokens = NULL;
+            success = 0;
+        }
+        else
+        {
+            tokens = tmp;
+            tokens[n - 1] = p;
+            tokens[n] = NULL;
+            ++n;
+            p = strtok(NULL, sep);
+            if (p != NULL)
+                success = 1;
+            else
+                success = 0;
+
+        }
+    }
+    return (tokens);
 }

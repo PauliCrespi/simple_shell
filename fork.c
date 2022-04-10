@@ -1,8 +1,8 @@
 #include "sshlib.h"
 /**
- *
- *
- *
+ *_fork - fork, wait and execute function
+ *@ptrbuf : buffer
+ *Return: parent id
  */
 pid_t  _fork(char **ptrbuf)
 {
@@ -18,13 +18,13 @@ pid_t  _fork(char **ptrbuf)
 	{
 		if (execve(ptrbuf[0], ptrbuf, NULL) == -1)
 		{
-		        perror("hsh error");
+			perror("hsh error");
 		}
 	}
 	else
 	{
-	        wait(&status);
-	        printf("hsh status: %d\n", status);
+		wait(&status);
+		printf("hsh status: %d\n", status);
 	}
 	return (pid);
 }

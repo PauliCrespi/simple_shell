@@ -4,7 +4,7 @@
  *@ptrbuf : buffer
  *Return: parent id
  */
-pid_t  _fork(char **ptrbuf)
+void _fork(char **ptrbuf)
 {
 	int status = 0;
 	pid_t pid = -1;
@@ -26,5 +26,4 @@ pid_t  _fork(char **ptrbuf)
 		wait(&status);
 		printf("hsh status: %d\n", status);
 	}
-	return (pid);
 }

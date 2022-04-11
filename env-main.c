@@ -7,7 +7,6 @@
  */
 int main(int ac, char **av)
 {
-	int i;
 	int interactive_ssh = 1;
 	int noninteractive_ssh = 1;
 

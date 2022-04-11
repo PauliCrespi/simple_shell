@@ -7,7 +7,7 @@
  *@mode : int
  *Return: flag
  */
-int look_cmd_in_path(char **vtline, char **path_tokens, char **buf, int mode)
+char **look_cmd_in_path(char **vtline, char **path_tokens, int mode)
 {
 	int i = 0, flag = -1, exe = -1, length = 0;
 	char *strv = NULL, *find = NULL, **cmd_tokens = NULL;
@@ -28,8 +28,8 @@ int look_cmd_in_path(char **vtline, char **path_tokens, char **buf, int mode)
 		exe = stat(strv, &sfile);
 		if (exe == 0)
 		{
-			buf[0] = malloc(_strlen(strv) * sizeof(char));
-			_strcpy(buf[0], strv);
+			vtline[0] = malloc(_strlen(strv) * sizeof(char));
+			_strcpy(vtline[0], strv);
 			flag = 0;
 			free(strv);
 			break;
@@ -40,5 +40,5 @@ int look_cmd_in_path(char **vtline, char **path_tokens, char **buf, int mode)
 		}
 	}
 	free(cmd_tokens);
-	return (flag);
+	return (vtline);
 }

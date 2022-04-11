@@ -16,7 +16,7 @@ void _fork(char **ptrbuf)
 	}
 	if (pid == 0)
 	{
-		if (execve(ptrbuf[0], ptrbuf, NULL) == -1)
+		if (execve(ptrbuf[0], ptrbuf, environ) == -1)
 		{
 			perror("hsh error");
 		}

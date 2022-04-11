@@ -19,7 +19,7 @@ int four_digits(char *line)
 	if (j == 4)
 	{
 		printf("Bye\n");
-		exit(0);
+		return (5);
 	}
 	j = 0;
 	for (i = 0; i < 4; i++)

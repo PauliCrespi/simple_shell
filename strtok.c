@@ -1,8 +1,9 @@
 #include "sshlib.h"
 /**
- *
- *
- *
+ *lensep - func
+ *@line : command line
+ *@sep : separator
+ *Return: int
  */
 int lensep(char *line,  const char *sep)
 {
@@ -15,6 +16,7 @@ int lensep(char *line,  const char *sep)
 	}
 	return (i);
 }
+
 /**
  *tokenizer - tokenize function
  *@line : command line

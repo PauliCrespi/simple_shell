@@ -14,9 +14,9 @@ int inline_ssh(int ac, char **argv)
 
 	path = _getenv("PATH");
 	path_cpy = malloc(_strlen(path) * sizeof(char));
-	_strcpy(path_cpy, path); 
-	path_tok = tokenizer(path_cpy, "=");                
-	path_tokens = tokenizer(path_tok[1], ":");	
+	_strcpy(path_cpy, path);
+	path_tok = tokenizer(path_cpy, "=");
+	path_tokens = tokenizer(path_tok[1], ":");
 	free(path_cpy);
 	free(path_tok);
 	vtline = malloc(ac * sizeof(char *));

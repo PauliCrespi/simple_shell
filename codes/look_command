@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if ls -v given-command > /dev/null 2>&1; then
-  echo given-command is available
-else
-  echo given-command is not available
-fi

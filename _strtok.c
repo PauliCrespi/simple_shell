@@ -7,7 +7,7 @@
  */
 char **_tokenize(char **line, const char *sep)
 {
-	char **tmp = NULL, **tokens = malloc(sizeof(char *));
+	char **tokens = NULL;
 	char *lline = NULL, *p = NULL;
 	size_t n = 1;
 	int success = 1, i = 0;
@@ -16,6 +16,7 @@ char **_tokenize(char **line, const char *sep)
 	{
 		lline = line[i];
 	}
+	tokens = malloc(sizeof(char *) * lensep(lline, sep));
 	p = strtok(lline, sep);
 	if (p != NULL)
 		success = 1;
@@ -23,16 +24,8 @@ char **_tokenize(char **line, const char *sep)
 		success = 0;
 	while (success)
 	{
-		tmp = realloc(tokens, (n + 1) * sizeof(char *));
-		if (tmp == NULL)
+		if (tokens != NULL)
 		{
-			free(tokens);
-			tokens = NULL;
-			success = 0;
-		}
-		else
-		{
-			tokens = tmp;
 			tokens[n - 1] = p;
 			tokens[n] = NULL;
 			++n;

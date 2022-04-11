@@ -15,8 +15,11 @@ void cpy_argv_to_buf(char **buf, char **vtline, int mode)
 		while (vtline[i] != NULL)
 		{
 			buf[i] = malloc(_strlen(vtline[i]) * sizeof(char));
-			_strcpy(buf[i], vtline[i]);
-			i++;
+			if (buf[i] != NULL)
+			{
+				_strcpy(buf[i], vtline[i]);
+				i++;
+			}
 		}
 	}
 	else if (mode == 1)
@@ -26,9 +29,12 @@ void cpy_argv_to_buf(char **buf, char **vtline, int mode)
 		while (vtline[j] != NULL)
 		{
 			buf[i] = malloc(_strlen(vtline[j]) * sizeof(char));
-			_strcpy(buf[i], vtline[j]);
-			i++;
-			j++;
+			if (buf[i] != NULL)
+			{
+				_strcpy(buf[i], vtline[j]);
+				i++;
+				j++;
+			}
 		}
 	}
 }

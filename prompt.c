@@ -7,13 +7,17 @@ int prompt(void)
 {
 	size_t sizebuff = 64;
 	char *buf[1024] = { NULL };
-	char *buffer = NULL, *path_cpy, **path_tokens = NULL, **vtline = NULL;
+	char *buffer = NULL, *path = NULL, **path_tokens = NULL, **vtline = NULL, *path_cpy;
 	int response = 0, flag = 0;
 
-	path_cpy = malloc(_strlen(_getenv("PATH")) * sizeof(char));
-	_strcpy(path_cpy, _getenv("PATH"));
-	path_tokens = _tokenize(tokenizer(path_cpy, "="), ":");
-	free(path_cpy);
+	path =  _getenv("PATH");
+	if (path != NULL)
+	{
+		path_cpy = malloc((_strlen(path) + 1) * sizeof(char));
+		_strcpy(path_cpy, path);
+		path_tokens = _tokenize(tokenizer(path_cpy, "="), ":");
+		free(path_cpy);
+	}
 	while (response != -1)
 	{
 		printf("[hshc]>_ ");

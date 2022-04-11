@@ -1,5 +1,21 @@
 #include "sshlib.h"
 /**
+ *
+ *
+ *
+ */
+int lensep(char *line,  const char *sep)
+{
+	int i = 0;
+
+	for (i = 0; line[i] != '\0'; i++)
+	{
+		if (line == sep)
+			i--;
+	}
+	return (i);
+}
+/**
  *tokenizer - tokenize function
  *@line : command line
  *@sep : separator character
@@ -7,7 +23,7 @@
  */
 char **tokenizer(char *line, const char *sep)
 {
-	char **tmp = NULL, **tokens = malloc(sizeof(char *));
+	char **tokens = malloc(sizeof(char *) * lensep(line, sep));
 	size_t n = 1;
 	int success = 0;
 	char *p = NULL;
@@ -19,16 +35,8 @@ char **tokenizer(char *line, const char *sep)
 		success = 0;
 	while (success)
 	{
-		tmp = realloc(tokens, (n + 1) * sizeof(char *));
-		if (tmp == NULL)
+		if (tokens != NULL)
 		{
-			free(tokens);
-			tokens = NULL;
-			success = 0;
-		}
-		else
-		{
-			tokens = tmp;
 			tokens[n - 1] = p;
 			tokens[n] = NULL;
 			++n;

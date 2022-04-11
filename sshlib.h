@@ -15,7 +15,7 @@ extern char **environ;
 int main(int ac, char **av);
 int prompt(void);
 char **tokenizer(char *line, const char *sep);
-int inline_ssh(int ac __attribute__((unused)), char **argv);
+int inline_ssh(int ac, char **argv);
 void _fork(char **ptrbuf);
 int manage_builtins(char *line);
 int three_digits(char *line);
@@ -31,5 +31,4 @@ int _strncmp(const char *s1, char *s2, int n);
 void _strcpy(char *dest, char *src);
 int is_combined_cmd(char **vtline);
 char **look_cmd_in_path(char **vtline, char **path_tokens, int mode);
-
 #endif

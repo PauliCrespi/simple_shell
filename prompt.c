@@ -16,14 +16,18 @@ int prompt(void)
 		path_cpy = malloc((_strlen(path) + 1) * sizeof(char));
 		_strcpy(path_cpy, path);
 		path_tokens = _tokenize(tokenizer(path_cpy, "="), ":");
-		free(path_cpy);
+		if (path_cpy != NULL)
+			free(path_cpy);
 	}
 	while (response != -1)
 	{
 		printf("[hshc]>_ ");
 		response = getline(&buffer, &sizebuff, stdin);
-		buffer[_strlen(buffer) - 1] = '\0';
-		vtline = tokenizer(buffer, " ");
+		if (response != -1)
+		{
+			buffer[_strlen(buffer) - 1] = '\0';
+			vtline = tokenizer(buffer, " ");
+		}
 		if (manage_builtins(vtline[0]) == 0)
 		{
 			continue;

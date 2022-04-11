@@ -39,5 +39,6 @@ int look_cmd_in_path(char **vtline, char **path_tokens, char **buf, int mode)
 			flag = -1;
 		}
 	}
+	free(cmd_tokens);
 	return (flag);
 }

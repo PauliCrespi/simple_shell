@@ -7,12 +7,13 @@ int prompt(void)
 {
 	size_t sizebuff = 64;
 	char *buf[1024] = { NULL };
-	char *buffer = NULL, *path_cpy = NULL, **path_tokens = NULL, **vtline = NULL;
+	char *buffer = NULL, *path_cpy, **path_tokens = NULL, **vtline = NULL;
 	int response = 0, flag = 0;
 
 	path_cpy = malloc(_strlen(_getenv("PATH")) * sizeof(char));
 	_strcpy(path_cpy, _getenv("PATH"));
 	path_tokens = _tokenize(tokenizer(path_cpy, "="), ":");
+	free(path_cpy);
 	while (response != -1)
 	{
 		printf("[hshc]>_ ");
@@ -40,9 +41,7 @@ int prompt(void)
 		else
 			printf("hsh: command not found.\n");
 		free(vtline);
-		free(buffer);
 	}
-	free(path_cpy);
-	free(path_tokens);
+		free(path_tokens);
 	return (response);
 }

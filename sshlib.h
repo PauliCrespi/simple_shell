@@ -10,6 +10,8 @@
 #include <stddef.h>
 #include <unistd.h>
 
+extern char **environ;
+
 int main(int ac, char **av);
 int prompt(void);
 int inline_ssh(int ac __attribute__((unused)), char **argv);

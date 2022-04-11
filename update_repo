@@ -1,5 +1,0 @@
-#!/bin/bash
-chmod -R 777 *
-git add .
-git commit -m "Simple Shell - Alex & Paulina"
-git push --set-upstream origin dev

@@ -25,7 +25,7 @@ int mypid(void);
 int myppid(void);
 char *_getenv(const char *name);
 int _strlen(const char *s);
-int seplen(char *line, const char *sep);
+int lensep(char *line, const char *sep);
 char **_tokenize(char **line, const char *sep);
 int _strncmp(const char *s1, char *s2, int n);
 void _strcpy(char *dest, char *src);

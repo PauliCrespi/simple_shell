@@ -3,7 +3,6 @@
  *look_cmd_in_path - function
  *@vtline : command line
  *@path_tokens : tokenized path
- *@buf : buffer
  *@mode : int
  *Return: flag
  */
@@ -20,7 +19,7 @@ char **look_cmd_in_path(char **vtline, char **path_tokens, int mode)
 	}
 	for (i = 0; path_tokens[i] != NULL; i++)
 	{
-		length = (_strlen(path_tokens[i]) + _strlen(find) + 1);
+		length = ((_strlen(path_tokens[i]) + 1)  + _strlen(find) + 1);
 		strv = malloc(length * sizeof(char));
 		_strcpy(strv, path_tokens[i]);
 		strcat(strv, "/");
@@ -28,7 +27,7 @@ char **look_cmd_in_path(char **vtline, char **path_tokens, int mode)
 		exe = stat(strv, &sfile);
 		if (exe == 0)
 		{
-			vtline[0] = malloc(_strlen(strv) * sizeof(char));
+			vtline[0] = malloc((_strlen(strv) + 1) * sizeof(char));
 			_strcpy(vtline[0], strv);
 			free(strv);
 			break;

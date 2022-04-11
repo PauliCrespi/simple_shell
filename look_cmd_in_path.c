@@ -9,7 +9,7 @@
  */
 char **look_cmd_in_path(char **vtline, char **path_tokens, int mode)
 {
-	int i = 0, flag = -1, exe = -1, length = 0;
+	int i = 0, exe = -1, length = 0;
 	char *strv = NULL, *find = NULL, **cmd_tokens = NULL;
 	struct stat sfile;
 
@@ -30,13 +30,8 @@ char **look_cmd_in_path(char **vtline, char **path_tokens, int mode)
 		{
 			vtline[0] = malloc(_strlen(strv) * sizeof(char));
 			_strcpy(vtline[0], strv);
-			flag = 0;
 			free(strv);
 			break;
-		}
-		else
-		{
-			flag = -1;
 		}
 	}
 	free(cmd_tokens);

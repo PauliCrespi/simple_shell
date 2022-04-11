@@ -6,46 +6,41 @@
 int prompt(void)
 {
 	size_t sizebuff = 64;
-	char *buffer = NULL, *path = NULL, **path_tokens = NULL;
-	char **ptrbuf = NULL, **vtline = NULL, *path_cpy;
-	int response = 0, flag = 0;
+	char *buffer = NULL, **path_tok = NULL, **path_tokens = NULL;
+	char **ptrbuf = NULL, **vtline = NULL, *path_cpy = NULL;
+	int response = 0;
 
-	path =  _getenv("PATH");
-	if (path != NULL)
-	{
-		path_cpy = malloc((_strlen(path) + 1) * sizeof(char));
-		_strcpy(path_cpy, path);
-		path_tokens = _tokenize(tokenizer(path_cpy, "="), ":");
-		if (path_cpy != NULL)
-			free(path_cpy);
-	}
+	path_cpy = malloc((_strlen(_getenv("PATH")) + 1) * sizeof(char));
+	_strcpy(path_cpy, _getenv("PATH"));
+	path_tok = tokenizer(path_cpy, "=");
+	path_tokens = _tokenize(path_tok, ":");
+	free(path_cpy);
 	while (response != -1)
 	{
 		printf("[hshc]>_ ");
 		response = getline(&buffer, &sizebuff, stdin);
-		if (response != -1)
-		{
-			buffer[_strlen(buffer) - 1] = '\0';
-			vtline = tokenizer(buffer, " ");
-		}
+		if (response == -1)
+			break;
+		buffer[_strlen(buffer) - 1] = '\0';
+		vtline = tokenizer(buffer, " ");
 		if (manage_builtins(vtline[0]) == 0)
-		{
 			continue;
-		}
-		flag = is_combined_cmd(vtline);
-		if (flag == -1)
-			ptrbuf = look_cmd_in_path(vtline, path_tokens, 0);
-		else
-			printf("hsh: command not found.\n");
-		if (ptrbuf == NULL)
+		else if (manage_builtins(vtline[0]) == 5)
 		{
-			printf("hsh: command not found.\n");
-			continue;
+			free(buffer);
+			free(vtline);
+			free(path_tok);
+			free(path_tokens);
+			exit(0);
 		}
-		else
-			_fork(ptrbuf);
-		free(vtline);
+		is_combined_cmd(vtline);
+		ptrbuf = look_cmd_in_path(vtline, path_tokens, 0);
+		_fork(ptrbuf);
 	}
+		free(buffer);
+		free(vtline);
+		free(ptrbuf);
+		free(path_tok);
 		free(path_tokens);
 	return (response);
 }

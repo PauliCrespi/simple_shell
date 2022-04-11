@@ -1,5 +1,6 @@
 #include "sshlib.h"
-/**_strncmp - string compare up to n char
+/**
+ * _strncmp - string compare up to n char
  *@s1 : s
  *@s2 : s2
  *@n : int n

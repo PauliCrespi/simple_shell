@@ -31,4 +31,7 @@ int _strncmp(const char *s1, char *s2, int n);
 void _strcpy(char *dest, char *src);
 int is_combined_cmd(char **vtline);
 char **look_cmd_in_path(char **vtline, char **path_tokens, int mode);
+char **token(void);
+
+
 #endif

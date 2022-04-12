@@ -17,9 +17,8 @@ int four_digits(char *line)
 			break;
 	}
 	if (j == 4)
-	{
-		return (5);
-	}
+		return (6);
+
 	j = 0;
 	for (i = 0; i < 4; i++)
 	{

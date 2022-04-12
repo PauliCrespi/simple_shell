@@ -1,6 +1,5 @@
 #ifndef SSHLIB_H
 #define SSHLIB_H
-
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
@@ -9,9 +8,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
-
+#include <stdarg.h>
 extern char **environ;
-
 int main(int ac, char **av);
 int prompt(void);
 char **tokenizer(char *line, const char *sep);
@@ -31,7 +29,5 @@ int _strncmp(const char *s1, char *s2, int n);
 void _strcpy(char *dest, char *src);
 int is_combined_cmd(char **vtline);
 char **look_cmd_in_path(char **vtline, char **path_tokens, int mode);
-char **token(void);
-
-
+void _free(int ac, ...);
 #endif

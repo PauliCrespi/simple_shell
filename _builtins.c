@@ -18,7 +18,6 @@ int four_digits(char *line)
 	}
 	if (j == 4)
 	{
-		printf("Bye\n");
 		return (5);
 	}
 	j = 0;

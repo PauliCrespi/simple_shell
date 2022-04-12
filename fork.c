@@ -24,6 +24,5 @@ void _fork(char **ptrbuf)
 	else
 	{
 		wait(&status);
-		printf("hsh status: %d\n", status);
 	}
 }
